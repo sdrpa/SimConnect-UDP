@@ -16,4 +16,4 @@ simconnect-udp <IP_ADDRESS> <PORT>
 
 ### License
 
-[MIT](https://github.com/git/git-scm.com/blob/master/MIT-LICENSE.txt)
+[MIT](https://en.wikipedia.org/wiki/MIT_License)
