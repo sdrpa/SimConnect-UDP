@@ -17,7 +17,19 @@ void setupDataDefinitions() {
     ASSERT_SC_SUCCESS(
         SimConnect_AddToDataDefinition(hSimConnect,
             DEFINITION_AIRCRAFT_POSITION,
-            "PLANE HEADING DEGREES MAGNETIC", 
+            "PLANE HEADING DEGREES MAGNETIC",
+            "Radians")
+    );
+    ASSERT_SC_SUCCESS(
+        SimConnect_AddToDataDefinition(hSimConnect,
+            DEFINITION_AIRCRAFT_POSITION,
+            "PLANE LATITUDE", 
+            "Radians")
+    );
+    ASSERT_SC_SUCCESS(
+        SimConnect_AddToDataDefinition(hSimConnect,
+            DEFINITION_AIRCRAFT_POSITION,
+            "PLANE LONGITUDE",
             "Radians")
     );
 }
@@ -37,11 +49,11 @@ void didReceiveObjectData(SIMCONNECT_RECV* pData, DWORD cbData) {
     if (pObjData->dwRequestID == REQUEST_AIRCRAFT_POSITION) {
         aircraft = *reinterpret_cast<Aircraft *>(&pObjData->dwData);
 
-        //int numVars = dataDefinitions[pObjData->dwDefineID].num_values;
-        //std::vector<SIMCONNECT_DATATYPE> valTypes = dataDefinitions[pObjData->dwDefineID].datum_types;
-        //std::vector<std::string> valIds = dataDefinitions[pObjData->dwDefineID].datum_names;
-
-        printf("HEADING: %lf\n", degrees(aircraft.heading));
+        printf("Aircraft: %lf %lf %lf\n", 
+            degrees(aircraft.heading), 
+            degrees(aircraft.latitude),
+            degrees(aircraft.longitude)
+        );
     }
 }
 

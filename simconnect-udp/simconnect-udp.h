@@ -9,7 +9,9 @@
 //const double SIM_UPDATE_RATE = 30;
 
 enum DATA_DEFINE_ID {
-	DEFINITION_AIRCRAFT_POSITION
+	DEFINITION_AIRCRAFT_POSITION,
+	DEFINITION_GPS_LATITUDE,
+	DEFINITION_GPS_LONGITUDE
 };
 
 enum REQUEST_ID {
@@ -19,5 +21,7 @@ enum REQUEST_ID {
 /* Start of Structure Definitions */
 
 struct Aircraft {
-	double heading; // True aircraft heading in radians
+	double heading;
+	double latitude;
+	double longitude;
 };
