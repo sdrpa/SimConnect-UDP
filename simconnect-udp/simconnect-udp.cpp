@@ -111,7 +111,16 @@ void runLoop() {
     SimConnect_Close(hSimConnect);
 }
 
-int main() {
-    runLoop();
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        printf("Usage:\n");
+        printf("\tsimconnect-udp 192.168.0.19 49003\n");
+        return 1;
+    }
+    char *ipAddress = argv[1];
+    auto *port = argv[2];
+    printf("IP: %s Port: %s\n", ipAddress, port);
+
+    //runLoop();
     return 0;
 }
